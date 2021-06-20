@@ -1,0 +1,11 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: library
+      authentication-database: none
+
+  messages:
+    encoding: UTF-8
+    fallback-to-system-locale: false
