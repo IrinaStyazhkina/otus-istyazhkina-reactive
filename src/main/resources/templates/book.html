@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style/style.css">
+    <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="page">
+    <header class="header">
+        <a href="/">
+            <img class="header_logo" src="/img/book_icon.svg" width="60" height="60" alt="book icon">
+        </a>
+        <h1 class="header_title" th:text="#{book}">Book</h1>
+        <div class="header_langs">
+            <a class="lang_link" href="?lang=ru_RU">
+                <img src="/img/russian-language.svg" width="30" height="30" alt="russian language icon"/>
+            </a>
+            <a class="lang_link" href="?lang=en">
+                <img src="/img/english-language.svg" width="30" height="30" alt="english language icon"/>
+            </a>
+        </div>
+    </header>
+    <main class="content">
+        <div class="content_column">
+            <div class="form_wrapper">
+            </div>
+        </div>
+        <div class="content_column">
+            <img class="content_image" src="/img/library.jpg" width="700" height="700" alt="library">
+        </div>
+    </main>
+    <footer class="footer">
+        <p class="footer_content">&copy; 2021 Library study project</p>
+    </footer>
+</div>
+<script src="/js/book.js"></script>
+<script>
+    $(function () {
+        loadBookData();
+    });
+</script>
+</body>
+</html>
