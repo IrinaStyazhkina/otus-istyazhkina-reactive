@@ -7,7 +7,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import ru.otus.istyazhkina.library.domain.jpa.Genre;
+import ru.otus.istyazhkina.library.domain.entity.Genre;
 import ru.otus.istyazhkina.library.repository.BookRepository;
 import ru.otus.istyazhkina.library.repository.GenreRepository;
 import ru.otus.istyazhkina.library.rest.controller.GenreController;
@@ -31,9 +31,9 @@ class GenreControllerTest {
     @Autowired
     private WebTestClient webTestClient;
 
-    private final Genre genre = new Genre("1", "novel");
-    private final String arrayJsonContent = "[{\"id\":\"1\",\"name\":\"novel\"}]";
-    private final String genreJson = "{\"id\":\"1\",\"name\":\"novel\"}";
+    private static final Genre genre = new Genre("1", "novel");
+    private static final String arrayJsonContent = "[{\"id\":\"1\",\"name\":\"novel\"}]";
+    private static final String genreJson = "{\"id\":\"1\",\"name\":\"novel\"}";
 
     @Test
     void shouldReturnGenresList() {

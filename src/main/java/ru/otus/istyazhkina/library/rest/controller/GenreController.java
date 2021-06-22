@@ -71,15 +71,14 @@ public class GenreController {
     }
 
     private Mono<GenreDTO> saveIfNoDuplications(GenreDTO genreDTO) {
-        return Mono.just(genreDTO)
-                .flatMap(genreDTO1 -> genreRepository.existsByName(genreDTO.getName())
-                        .flatMap(aBoolean -> {
-                            if (aBoolean) {
-                                return Mono.error(new DataOperationException("This genre already exists"));
-                            } else {
-                                return genreRepository.save(GenreDTO.toGenre(genreDTO));
-                            }
-                        }))
+        return genreRepository.existsByName(genreDTO.getName())
+                .flatMap(aBoolean -> {
+                    if (aBoolean) {
+                        return Mono.error(new DataOperationException("This genre already exists"));
+                    } else {
+                        return genreRepository.save(GenreDTO.toGenre(genreDTO));
+                    }
+                })
                 .map(GenreDTO::toDto);
     }
 }

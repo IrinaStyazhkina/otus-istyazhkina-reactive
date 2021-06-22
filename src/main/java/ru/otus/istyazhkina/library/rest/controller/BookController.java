@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import ru.otus.istyazhkina.library.domain.jpa.Book;
+import ru.otus.istyazhkina.library.domain.entity.Book;
 import ru.otus.istyazhkina.library.domain.rest.BookDTO;
 import ru.otus.istyazhkina.library.exception.DataOperationException;
 import ru.otus.istyazhkina.library.repository.AuthorRepository;

@@ -7,7 +7,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import ru.otus.istyazhkina.library.domain.jpa.Author;
+import ru.otus.istyazhkina.library.domain.entity.Author;
 import ru.otus.istyazhkina.library.repository.AuthorRepository;
 import ru.otus.istyazhkina.library.repository.BookRepository;
 import ru.otus.istyazhkina.library.rest.controller.AuthorController;
@@ -31,9 +31,9 @@ class AuthorControllerTest {
     @Autowired
     private WebTestClient webTestClient;
 
-    private final Author author = new Author("1", "Lev", "Tolstoy");
-    private final String arrayJsonContent = "[{\"id\":\"1\",\"name\":\"Lev\",\"surname\":\"Tolstoy\"}]";
-    private final String authorJson = "{\"id\":\"1\",\"name\":\"Lev\",\"surname\":\"Tolstoy\"}";
+    private static final Author author = new Author("1", "Lev", "Tolstoy");
+    private static final String arrayJsonContent = "[{\"id\":\"1\",\"name\":\"Lev\",\"surname\":\"Tolstoy\"}]";
+    private static final String authorJson = "{\"id\":\"1\",\"name\":\"Lev\",\"surname\":\"Tolstoy\"}";
 
     @Test
     void shouldReturnAuthorsList() {

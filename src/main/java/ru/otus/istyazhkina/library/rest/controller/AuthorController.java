@@ -67,15 +67,14 @@ public class AuthorController {
     }
 
     private Mono<AuthorDTO> saveIfNoDuplications(AuthorDTO authorDTO) {
-        return Mono.just(authorDTO)
-                .flatMap(authorDTO1 -> authorRepository.existsByNameAndSurname(authorDTO.getName(), authorDTO.getSurname())
-                        .flatMap((aBoolean -> {
-                            if (aBoolean) {
-                                return Mono.error(new DataOperationException("This author already exists"));
-                            } else {
-                                return authorRepository.save(AuthorDTO.toAuthor(authorDTO));
-                            }
-                        })))
+        return authorRepository.existsByNameAndSurname(authorDTO.getName(), authorDTO.getSurname())
+                .flatMap((aBoolean -> {
+                    if (aBoolean) {
+                        return Mono.error(new DataOperationException("This author already exists"));
+                    } else {
+                        return authorRepository.save(AuthorDTO.toAuthor(authorDTO));
+                    }
+                }))
                 .map(AuthorDTO::toDto);
     }
 }
